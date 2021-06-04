@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/exploreFragment">
+
+    <fragment
+        android:id="@+id/communityFragment"
+        android:name="com.dev.pokemongo.ui.community.CommunityFragment"
+        android:label="fragment_community"
+        tools:layout="@layout/fragment_community" >
+        <action
+            android:id="@+id/action_communityFragment_to_capturedFragment"
+            app:destination="@id/capturedFragment" />
+        <action
+            android:id="@+id/action_communityFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/capturedFragment"
+        android:name="com.dev.pokemongo.ui.captured.CapturedFragment"
+        android:label="fragment_captured"
+        tools:layout="@layout/fragment_captured" >
+        <action
+            android:id="@+id/action_capturedFragment_to_communityFragment"
+            app:destination="@id/communityFragment" />
+        <action
+            android:id="@+id/action_capturedFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.dev.pokemongo.ui.details.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
+    <fragment
+        android:id="@+id/exploreFragment"
+        android:name="com.dev.pokemongo.ui.explore.ExploreFragment"
+        android:label="fragment_explore"
+        tools:layout="@layout/fragment_explore" >
+        <action
+            android:id="@+id/action_exploreFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myTeamFragment"
+        android:name="com.dev.pokemongo.ui.myteam.MyTeamFragment"
+        android:label="fragment_my_team"
+        tools:layout="@layout/fragment_my_team" >
+        <action
+            android:id="@+id/action_myTeamFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+</navigation>

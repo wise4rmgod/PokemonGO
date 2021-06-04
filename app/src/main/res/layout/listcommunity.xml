@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/startcard_image"
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/start_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="center"
+                    android:src="@drawable/body" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/trainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Getting around the bowel"
+                android:textColor="@color/black"
+                android:textSize="@dimen/smallest_dp"
+                app:layout_constraintStart_toEndOf="@id/startcard_image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/captured"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="joli"
+                android:textColor="@color/black"
+                android:textSize="@dimen/smallest_dp"
+                app:layout_constraintStart_toEndOf="@id/startcard_image"
+                app:layout_constraintTop_toBottomOf="@id/trainer" />
+
+            <TextView
+                android:id="@+id/artist_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="joli"
+                android:textColor="@color/black"
+                android:textSize="@dimen/smallest_dp"
+                app:layout_constraintStart_toEndOf="@id/startcard_image"
+                app:layout_constraintTop_toBottomOf="@id/captured" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/endcard_image"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                app:cardCornerRadius="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/end_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/body" />
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
