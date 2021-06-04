@@ -86,7 +86,6 @@ class ExploreFragment : Fragment(), OnMapReadyCallback {
             false
         }
 
-
         try {
             p0.isMyLocationEnabled = true
             //mGoogleMap.getUiSettings().setMyLocationButtonEnabled(false);

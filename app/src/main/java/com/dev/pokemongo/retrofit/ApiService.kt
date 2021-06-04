@@ -1,4 +1,4 @@
-package com.example.urlshortenapp.retrofit
+package com.dev.pokemongo.retrofit
 
 
 import com.dev.pokemongo.retrofit.request.GetPokemon

@@ -6,10 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.dev.pokemongo.R
+import com.dev.pokemongo.databinding.ActivityPokemonDetailsBinding
 
 
 class DetailsFragment : Fragment() {
-
+    lateinit var binding: ActivityPokemonDetailsBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

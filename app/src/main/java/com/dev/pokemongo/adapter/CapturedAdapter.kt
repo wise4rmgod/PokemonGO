@@ -1,5 +1,6 @@
 package com.dev.pokemongo.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -7,6 +8,7 @@ import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 import com.dev.pokemongo.databinding.ListcapturedBinding
 import com.dev.pokemongo.retrofit.response.CapturedResponse
+import com.dev.pokemongo.ui.details.PokemonDetailsActivity
 
 class CapturedAdapter(
     private var dataList: List<CapturedResponse>
@@ -31,27 +33,19 @@ class CapturedAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val dataModel = dataList.get(position)
 
-       // holder.captured.text = dataModel.captured_at
-
         holder.itemView.setOnClickListener {
+            val intentscreen = Intent(holder.itemView.context, PokemonDetailsActivity::class.java)
+            intentscreen.putExtra("name", dataModel.name)
+            intentscreen.putExtra("captureat", dataModel.captured_at)
+            holder.itemView.context.startActivity(intentscreen)
 
-            val bundle = bundleOf()
-            dataModel.id.let { it1 ->
-                if (it1 != null) {
-                    bundle.putInt("id", it1)
-                }
-            }
-            dataModel.captured_at.let { it1 -> bundle.putString("id", it1) }
-
-            //  holder.itemView.findNavController()
-            //   .navigate(R.id.action_navigation_home_to_detailsViewFragment, bundle)
         }
 
     }
 
     class ViewHolder(binding: ListcapturedBinding) : RecyclerView.ViewHolder(binding.root) {
 
-      //  var captured: TextView = binding.capturedValue
+        //  var captured: TextView = binding.capturedValue
 
     }
 

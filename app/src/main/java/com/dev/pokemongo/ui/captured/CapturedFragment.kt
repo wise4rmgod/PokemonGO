@@ -17,8 +17,10 @@ import com.dev.pokemongo.retrofit.response.MyteamResponse
 import com.dev.pokemongo.sharedpreference.AccountManager
 import com.dev.pokemongo.ui.myteam.MyTeamViewModel
 import com.example.urlshortenapp.utils.Status
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class CapturedFragment : Fragment() {
     lateinit var binding: FragmentCapturedBinding
     val viewModel: CapturedViewModel by viewModels()
@@ -30,14 +32,18 @@ class CapturedFragment : Fragment() {
         binding = FragmentCapturedBinding.inflate(inflater, container, false)
         val root = binding.root
 
+        // list from remote server
         viewModel.getCaptured(AccountManager.getToken()).observe(viewLifecycleOwner, Observer {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
                         resource.data.let {
-                            binding.capturedRecyclerview.adapter =
-                                CapturedAdapter(it as ArrayList<CapturedResponse>)
-                            Log.d("Myteam", it.toString())
+                            if (it != null) {
+                                for (u in it) {
+                                    viewModel.saveCaptured(u)
+                                }
+                            }
+
                         }
                     }
                     Status.ERROR -> {
@@ -49,6 +55,12 @@ class CapturedFragment : Fragment() {
                     }
                 }
             }
+        })
+
+        // list of Local room db
+        viewModel.getlocalCaptured.observe(viewLifecycleOwner, Observer {
+            binding.capturedRecyclerview.adapter =
+                CapturedAdapter(it as ArrayList<CapturedResponse>)
         })
         return root
     }

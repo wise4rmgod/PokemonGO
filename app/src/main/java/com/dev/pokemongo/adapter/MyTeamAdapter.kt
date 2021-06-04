@@ -1,5 +1,6 @@
 package com.dev.pokemongo.adapter
 
+import android.content.Intent
 import android.os.Environment
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 import com.dev.pokemongo.databinding.ListteamBinding
 import com.dev.pokemongo.retrofit.response.MyteamResponse
+import com.dev.pokemongo.ui.details.PokemonDetailsActivity
 
 class MyTeamAdapter(
     private var dataList: List<MyteamResponse>
@@ -37,12 +39,11 @@ class MyTeamAdapter(
         holder.hp.text = dataModel.captured_lat_at.toString()
 
         holder.itemView.setOnClickListener {
+            val intentscreen = Intent(holder.itemView.context, PokemonDetailsActivity::class.java)
+            intentscreen.putExtra("name", dataModel.name)
+            intentscreen.putExtra("captureat", dataModel.captured_at)
+            holder.itemView.context.startActivity(intentscreen)
 
-            val bundle = bundleOf()
-            dataModel.id.let { it1 -> bundle.putInt("id", it1) }
-
-            //  holder.itemView.findNavController()
-            //   .navigate(R.id.action_navigation_home_to_detailsViewFragment, bundle)
         }
 
     }

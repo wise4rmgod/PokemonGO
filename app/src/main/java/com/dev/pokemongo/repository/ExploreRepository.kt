@@ -1,6 +1,6 @@
 package com.dev.pokemongo.repository
 
-import com.example.urlshortenapp.retrofit.ApiService
+import com.dev.pokemongo.retrofit.ApiService
 import com.example.urlshortenapp.retrofit.RetrofitClient
 
 class ExploreRepository {

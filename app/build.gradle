@@ -39,6 +39,7 @@ android {
 }
 
 dependencies {
+    androidTestImplementation 'androidx.test:rules:1.4.0-beta01'
     def activity_version = "1.2.0-alpha02"
     def room_version = "2.3.0"
     def hilt_jetpack = "1.0.0-alpha01"

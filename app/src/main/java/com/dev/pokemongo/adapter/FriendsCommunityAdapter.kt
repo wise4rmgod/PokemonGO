@@ -1,5 +1,6 @@
 package com.dev.pokemongo.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -8,8 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dev.pokemongo.databinding.ListcommunityBinding
 import com.dev.pokemongo.retrofit.response.communityresponse.Foes
 import com.dev.pokemongo.retrofit.response.communityresponse.Friends
+import com.dev.pokemongo.ui.details.PokemonDetailsActivity
 
-class FriendsCommunityAdapter (
+class FriendsCommunityAdapter(
     private var dataList: List<Friends>
 ) : RecyclerView.Adapter<FriendsCommunityAdapter.ViewHolder>() {
 
@@ -35,14 +37,11 @@ class FriendsCommunityAdapter (
         holder.trainer.text = dataModel.pokemon.name
         holder.captured.text = dataModel.pokemon.captured_at
 
-
         holder.itemView.setOnClickListener {
-
-            val bundle = bundleOf()
-            //   dataModel.id.let { it1 -> bundle.putInt("id", it1) }
-
-            //  holder.itemView.findNavController()
-            //   .navigate(R.id.action_navigation_home_to_detailsViewFragment, bundle)
+            val intentscreen = Intent(holder.itemView.context, PokemonDetailsActivity::class.java)
+            intentscreen.putExtra("name", dataModel.pokemon.name)
+            intentscreen.putExtra("captureat", dataModel.pokemon.captured_at)
+            holder.itemView.context.startActivity(intentscreen)
         }
 
     }

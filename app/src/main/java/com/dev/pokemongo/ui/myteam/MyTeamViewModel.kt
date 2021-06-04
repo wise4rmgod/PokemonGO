@@ -1,10 +1,7 @@
 package com.dev.pokemongo.ui.myteam
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.dev.pokemongo.repository.ExploreRepository
 import com.dev.pokemongo.repository.MyTeamRepository
 import com.dev.pokemongo.retrofit.response.MyteamResponse
@@ -15,8 +12,8 @@ import kotlinx.coroutines.withContext
 
 class MyTeamViewModel @ViewModelInject constructor(private val myTeamRepository: MyTeamRepository) :
     ViewModel() {
-    // var mainRepository: MyTeamRepository = MyTeamRepository()
-    var getlocalteam: MutableLiveData<MyteamResponse> = MutableLiveData()
+
+    var getloct: LiveData<List<MyteamResponse>> = myTeamRepository.getlocalTeam()
     fun getMyTeam(token: String) = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
         try {
@@ -29,9 +26,7 @@ class MyTeamViewModel @ViewModelInject constructor(private val myTeamRepository:
     fun saveTeam(myteamResponse: MyteamResponse) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                if (getlocalteam.value != null) {
-                    myTeamRepository.addlocalTeam(myteamResponse)
-                }
+                myTeamRepository.addlocalTeam(myteamResponse)
             }
         }
     }

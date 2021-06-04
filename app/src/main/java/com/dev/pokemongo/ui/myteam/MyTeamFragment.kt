@@ -38,17 +38,26 @@ class MyTeamFragment : Fragment() {
 
                         resource.data.let {
                             if (it != null) {
-                                for (u in it)
-                                    if (u == viewModel.getlocalteam.value) {
-                                        viewModel.saveTeam(u)
+                                for (u in it) {
+                                    viewModel.saveTeam(u)
+                                    /**    viewModel.getloct.observe(viewLifecycleOwner, Observer {
+                                    for (yu in it)
+                                    if (u != yu) {
+                                    Log.d("roomdb", u.toString())
+                                    viewModel.saveTeam(u)
                                     } else {
-                                        Toast.makeText(activity, "Data exit ", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(
+                                    activity,
+                                    "Data exit ",
+                                    Toast.LENGTH_SHORT
+                                    ).show()
                                     }
+                                    }) **/
+
+                                }
 
                             }
-                            binding.teamRecyclerview.adapter =
-                                MyTeamAdapter(it as ArrayList<MyteamResponse>)
-                            Log.d("Myteam", it.toString())
+
                         }
                     }
                     Status.ERROR -> {
@@ -60,6 +69,12 @@ class MyTeamFragment : Fragment() {
                     }
                 }
             }
+        })
+
+
+        viewModel.getloct.observe(viewLifecycleOwner, Observer {
+            binding.teamRecyclerview.adapter =
+                MyTeamAdapter(it as ArrayList<MyteamResponse>)
         })
 
 
